@@ -8,8 +8,8 @@ to specific tools and features based on their responsibilities. The AI chatbot w
 virtual assistant, offering 24/7 academic support and guiding users through the system.
 
 # About Authors
-### `Author` @ayushchettri
+### Author `@ayushchettri` 
 
-### `Co-author` @sunar9611
+### Co-author `@sunar9611` 
 
-### `Co-author` 
+### Co-author `Akansh` 
