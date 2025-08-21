@@ -1,0 +1,134 @@
+html,
+body{
+ width: 100%;
+ height: 100%;
+ font-family: 'Open Sans', sans-serif;
+}
+
+div #contaiver{
+    width: 100%;
+}
+
+#topNav{
+    width: 100%;
+    height: 100%;
+    background-color: #002147;
+    color: #fff;
+    font-size:13px;
+    font-weight: 50;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#topAddress{
+    width: 30%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#sign-in{
+    background-color: rgb(247, 112, 63);
+    color: #fff;
+    border: 0px;
+    width: 80px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor:pointer;
+}
+
+#midNav{
+    display: flex;
+    justify-content: center;
+}
+#sist-logo{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+}
+#three-logo{
+    width: 50%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#sist-logo img{
+    height: 60px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+#three-logo img{
+    height: 60px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+#bottomNav{
+    width: 100%;
+    height: 80px;
+    background-color: #002147;
+    color: #fff;
+    display: flex;
+    justify-content:right;
+    align-items: center;
+}
+
+#bottomNav ul{
+    width: 50%;
+    margin: 0px;
+    text-decoration: none;
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    font-weight: 600;
+    font-size: small;
+}
+#bottomNav ul li a{
+    text-decoration: none;
+    color: #fff;
+}
+#bottomNav ul li a:hover{
+    color: rgb(247, 112, 63);
+    transition: 0.3s ease-in-out;
+}
+
+#main{
+    height: 500px;
+    background-image: url(./image/sist-banner.jpg);
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items:end;
+    padding-bottom: 30px;
+}
+#main button{
+    width: 85px;
+    height: 85px;
+    border-radius: 50%;
+    border: none;
+    font-size: small;
+    background-color: #002147;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+#main button:hover{
+    width: 90px;
+    height: 90px;
+    background-color: rgb(247, 112, 63);
+    transition: 0.2s ease-in-out;
+}
+
+#main button img{
+    padding-bottom: 5px;
+    width: 30px;
+}
