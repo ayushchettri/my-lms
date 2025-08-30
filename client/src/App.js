@@ -4,6 +4,7 @@ import './index.css'
 import logo from './image/sist-logo.png'
 import bgImage from './image/sist-banner.jpg'
 import about from './image/about-us.png'
+import photo from './image/login-avatar.png'
 
 export function App () {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -69,7 +70,64 @@ export function App () {
       {/* Developers Section */}
       <section id="developers" className="section developers">
         <h2>DEVELOPED <span className="highlight">BY</span></h2>
-        <p>This site was developed by SIST students.</p>
+        <div className="section-items">
+          <div id='asish-shakya' className="developer-items">
+            <img src={photo} alt="ASISH SHAKYA" />
+            <div className='dev-details'>
+              <h2>PROJECT <span className='highlight'>GUIDE</span></h2>
+              <h3>ASISH SHAKYA</h3>
+              <p>Assistant Professor, Computer Department</p>
+              <div className="social-icons">
+              <a href="#"><i className="fab fa-facebook"></i></a>
+              <a href="#"><i className="fab fa-instagram"></i></a>
+              <a href="#"><i className="fab fa-github"></i></a>
+              <a href="#"><i className="fab fa-linkedin"></i></a>
+            </div>
+            </div>
+          </div>
+          <div id='ayush-chettri' className="developer-items">
+            <div className='dev-details'>
+              <h2>BACK<span className='highlight'>END</span></h2>
+              <h3>AYUSH CHETTRI</h3>
+              <p>Student, Computer Department</p>
+              <div className="social-icons">
+              <a href="https://www.facebook.com/rhoni.chhetri/"><i className="fab fa-facebook"></i></a>
+              <a href="https://www.instagram.com/ayushchettri47"><i className="fab fa-instagram"></i></a>
+              <a href="https://www.github.com/ayushchettri"><i className="fab fa-github"></i></a>
+              <a href="https://www.linkedin.com/in/ayush-chettri"><i className="fab fa-linkedin"></i></a>
+            </div>
+            </div>
+            <img src={photo} alt="AYUSH CHETTRI" />
+          </div>
+          <div id='ashish-sunar' className="developer-items">
+            <img src={photo} alt="ASISH SUNAR" />
+            <div className='dev-details'>
+              <h2>FRONT<span className='highlight'>END</span></h2>
+              <h3>ASHISH SUNAR</h3>
+              <p>Student, Computer Department</p>
+              <div className="social-icons">
+              <a href="#"><i className="fab fa-facebook"></i></a>
+              <a href="#"><i className="fab fa-instagram"></i></a>
+              <a href="#"><i className="fab fa-github"></i></a>
+              <a href="#"><i className="fab fa-linkedin"></i></a>
+            </div>
+            </div>
+          </div>
+          <div id='aakansh-rai' className="developer-items">
+            <div className='dev-details'>
+              <h2>DATA<span className='highlight'>BASE</span></h2>
+              <h3>AAKANSH RAI</h3>
+              <p>Student, Computer Department</p>
+              <div className="social-icons">
+              <a href="#"><i className="fab fa-facebook"></i></a>
+              <a href="#"><i className="fab fa-instagram"></i></a>
+              <a href="#"><i className="fab fa-github"></i></a>
+              <a href="#"><i className="fab fa-linkedin"></i></a>
+            </div>
+            </div>
+            <img src={photo} alt="AAKANSH RAI" />
+          </div>
+        </div>
       </section>
 
         {/* Footer Section */}

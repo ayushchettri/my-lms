@@ -139,6 +139,7 @@ body, html {
   width: 50%;
 }
 .section-items{
+  width: 100%;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -168,6 +169,48 @@ body, html {
   background: #f9f9f9;
 }
 
+.developers .section-items{
+  display: flex;
+  flex-direction: column;
+}
+.developer-items{
+  margin-top: 10px;
+  width: 90%;
+  height: 220px;
+  background-color: #002147;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  transform: skew(-20deg);
+  overflow:visible;
+ } 
+ .developer-items .dev-details{
+  width:50%;
+  transform: skew(20deg);
+ }
+ .developer-items img{
+  width: 200px;
+  height: 200px;
+  
+  transform: skew(20deg);
+ }
+
+ .developers .social-icons a{
+  color: #fff;
+ }
+
+#asish-shakya, #ashish-sunar{
+  text-align: left;
+}
+
+#ayush-chettri, #aakansh-rai{
+  justify-content:flex-end;
+  text-align:right;
+}
+
+#ayush-chettri p, #aakansh-rai p{
+  width: 100%;
+}
 .address {
   color: #555;
   margin-top: 2px;
