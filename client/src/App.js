@@ -1,13 +1,16 @@
-import React, {useEffect, useState} from 'react'
+import React, { useState} from 'react'
+import { BrowserRouter as Router, Routes, Route, useNavigate } from "react-router-dom";
 import './App.css'
 import './index.css'
 import logo from './image/sist-logo.png'
 import bgImage from './image/sist-banner.jpg'
 import about from './image/about-us.png'
 import photo from './image/login-avatar.png'
+import Login from './components/login.js'
 
-export function App () {
+function Home () {
   const [menuOpen, setMenuOpen] = useState(false);
+  const navigate = useNavigate();
     return (
     <div className="container">
       {/* Navbar */}
@@ -23,7 +26,7 @@ export function App () {
           <a href="#about">About Us</a>
           <a href="#contact">Contact Us</a>
           <a href="#developers">Developers</a>
-          <button className="login-btn">Login</button>
+          <button className="login-btn" onClick={() => navigate("/login")}>Login</button>
         </nav>
       </header>
 
@@ -36,7 +39,7 @@ export function App () {
         {/* Background Image Section */}
         <div className="image-container">
           <img src={bgImage} alt="Campus" className="main-image" />
-          <button className="overlay-login-btn">Login</button>
+          <button className="overlay-login-btn" onClick={() => navigate("/login")}>Login</button>
         </div>
 
         {/* About Section */}
@@ -146,8 +149,17 @@ export function App () {
       </main>
     </div>
   );
+}
 
-
+export function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+      </Routes>
+    </Router>
+  );
 }
 
 export default App
