@@ -31,7 +31,13 @@ function Login() {
 
       if (res.ok && result.success) {
         alert("Login successful!");
-        navigate("/dashboard");
+        if (result.role === "admin") {
+          navigate("/admin-dashboard");
+        } else if (result.role === "teacher") {
+          navigate("/teacher-dashboard");
+        } else if (result.role === "student") {
+          navigate("/student-dashboard");
+        }
       } else {
         setError(result.message || "Login failed");
       }
