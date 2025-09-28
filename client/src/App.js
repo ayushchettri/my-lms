@@ -7,6 +7,8 @@ import bgImage from './image/sist-banner.jpg'
 import about from './image/about-us.png'
 import photo from './image/login-avatar.png'
 import Login from './components/login.js'
+import Dashboard from './components/dashboard.js';
+
 
 function Home () {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -157,6 +159,7 @@ export function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
     </Router>
   );
