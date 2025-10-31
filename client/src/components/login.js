@@ -32,11 +32,11 @@ function Login() {
       if (res.ok && result.success) {
         alert("Login successful!");
         if (result.role === "admin") {
-          navigate("/admin-dashboard");
+          navigate("/admin/dashboard");
         } else if (result.role === "teacher") {
-          navigate("/teacher-dashboard");
+          navigate("/teacher/dashboard");
         } else if (result.role === "student") {
-          navigate("/student-dashboard");
+          navigate("/student/dashboard");
         }
       } else {
         setError(result.message || "Login failed");

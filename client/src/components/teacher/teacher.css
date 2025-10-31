@@ -1,0 +1,108 @@
+.teacher-layout {
+  display: flex;
+  height: 100vh;
+  background-color: #f9f9f9;
+  font-family: "Poppins", sans-serif;
+}
+
+.teacher-sidebar {
+  width: 220px;
+  background: #ece7e7;
+  padding: 20px;
+}
+
+.sidebar-logo {
+  font-size: 24px;
+  font-weight: 800;
+  color: #444;
+  margin-bottom: 30px;
+}
+
+.sidebar-logo span {
+  color: orange;
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+}
+
+.nav-item {
+  padding: 10px 0;
+  text-decoration: none;
+  color: #444;
+  font-weight: 500;
+}
+
+.nav-item.active {
+  color: orange;
+  font-weight: 700;
+}
+
+.teacher-main {
+  flex: 1;
+  padding: 30px 40px;
+  overflow-y: auto;
+}
+
+.page-header {
+  margin-bottom: 20px;
+}
+
+/* Reusable cards & grids */
+.stat-card, .course-card, .subject-card, .assignment-card {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.courses-grid, .attendance-subjects {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.subject-card:hover {
+  background-color: #fff2cc;
+  cursor: pointer;
+  transform: translateY(-3px);
+  transition: 0.3s;
+}
+
+/* Attendance Panel */
+.attendance-panel {
+  margin-top: 30px;
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+}
+
+.attendance-actions button {
+  background: orange;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  margin-right: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.upload-section input {
+  padding: 8px;
+  margin-right: 10px;
+}
+
+.upload-section button {
+  background: orange;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.status-text {
+  color: green;
+  margin-top: 10px;
+}

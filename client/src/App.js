@@ -8,8 +8,22 @@ import about from './image/about-us.png'
 import photo from './image/login-avatar.png'
 import Login from './components/login.js'
 import AdminDashboard from './components/admin/dashboard.js';
-import TeacherDashboard from './components/teacher/dashboard.js';
-import StudentDashboard from './components/student/dashboard.js';
+
+// Student imports
+import StudentLayout from "./components/student/Layout";
+import StudentDashboard from "./components/student/dashboard";
+import StudentAttendance from "./components/student/attendance";
+import StudentCourses from "./components/student/course";
+import StudentAssignments from "./components/student/assignments";
+import StudentProfile from "./components/student/profile";
+
+// Teacher imports
+import TeacherLayout from "./components/teacher/Layout";
+import TeacherDashboard from "./components/teacher/dashboard";
+import TeacherAttendance from "./components/teacher/attendance";
+import TeacherCourses from "./components/teacher/course";
+import TeacherAssignments from "./components/teacher/assignments";
+import TeacherProfile from "./components/teacher/profile";
 
 function Home () {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -162,7 +176,23 @@ export function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/admin-dashboard" element={<AdminDashboard />} />
         <Route path="/teacher-dashboard" element={<TeacherDashboard />} />
-        <Route path="/student-dashboard" element={<StudentDashboard />} />
+        {/* Student Routes */}
+        <Route path="/student" element={<StudentLayout />}>
+          <Route path="dashboard" element={<StudentDashboard />} />
+          <Route path="attendance" element={<StudentAttendance />} />
+          <Route path="courses" element={<StudentCourses />} />
+          <Route path="assignments" element={<StudentAssignments />} />
+          <Route path="profile" element={<StudentProfile />} />
+        </Route>
+
+        {/* Teacher Routes */}
+        <Route path="/teacher" element={<TeacherLayout />}>
+          <Route path="dashboard" element={<TeacherDashboard />} />
+          <Route path="attendance" element={<TeacherAttendance />} />
+          <Route path="courses" element={<TeacherCourses />} />
+          <Route path="assignments" element={<TeacherAssignments />} />
+          <Route path="profile" element={<TeacherProfile />} />
+        </Route>
       </Routes>
     </Router>
   );
