@@ -12,7 +12,7 @@ const Profile = () => {
   return (
     <div className="profile-page">
       <header className="page-header">
-        <h2>Teacher Profile</h2>
+        <h2>Admin Profile</h2>
       </header>
 
       <div className="profile-card">
@@ -21,12 +21,12 @@ const Profile = () => {
           alt="Profile"
           className="profile-avatar"
         />
-        <h3>Prof. Sharma</h3>
-        <p>Department: Computer Science</p>
-        <p>Email: sharma@sist.edu.in</p>
-        <p>Experience: 8 years</p>
-        <button className="edit-btn">Edit Profile</button>
-        <button className="logout-btn" onClick={handleLogout}>Logout</button>
+        <h3>Admin</h3>
+        <p>Email: admin@sist.edu.in</p>
+        <p>Role: System Administrator</p>
+        <button className="logout-btn" onClick={handleLogout}>
+          Logout
+        </button>
       </div>
     </div>
   );

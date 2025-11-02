@@ -8,13 +8,13 @@ const Dashboard = () => {
         <header className="header">
           <div>
             <h2>Welcome Back 👋</h2>
-            <p>Student Name | Reg No | Semester</p>
+            <p>Ayush Chettri | 22CSEC34 | 7th Semester</p>
           </div>
           <div className="attendance-widget">
             <h4>Attendance</h4>
             <div className="circle">
               <div className="inner-circle"></div>
-              <span className="attendance-value">9/10</span>
+              <span className="attendance-value">90%</span>
             </div>
           </div>
         </header>
@@ -31,7 +31,7 @@ const Dashboard = () => {
           </div>
           <div className="stat-card">
             <h3>⭐ GPA</h3>
-            <p className="stat-number">8.7</p>
+            <p className="stat-number">7.6</p>
           </div>
         </section>
 
@@ -40,17 +40,17 @@ const Dashboard = () => {
           <h2>My Courses</h2>
           <div className="courses-grid">
             <div className="course-card">
-              <div className="course-image">IMG</div>
+              <div className="course-image">WEB</div>
               <h4>Web Development</h4>
               <p>HTML, CSS, JS, React</p>
             </div>
             <div className="course-card">
-              <div className="course-image">IMG</div>
+              <div className="course-image">DS</div>
               <h4>Data Structures</h4>
               <p>Arrays, Trees, Graphs</p>
             </div>
             <div className="course-card">
-              <div className="course-image">IMG</div>
+              <div className="course-image">DBMS</div>
               <h4>Database Systems</h4>
               <p>SQL, PostgreSQL</p>
             </div>

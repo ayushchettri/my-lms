@@ -1,0 +1,152 @@
+.attendance-sheet {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header h2 {
+  font-size: 22px;
+  margin-bottom: 15px;
+}
+
+.back-btn {
+  background: none;
+  border: none;
+  font-size: 16px;
+  color: #2563eb;
+  cursor: pointer;
+}
+
+.back-btn:hover {
+  text-decoration: underline;
+}
+
+.filter-section {
+  display: flex;
+  align-items: flex-end;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.filter-section label {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+.filter-section input,
+.filter-section select {
+  padding: 6px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.search-btn {
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 14px;
+  cursor: pointer;
+}
+
+.search-btn:hover {
+  background-color: #1e4ed8;
+}
+
+.attendance-table {
+  overflow-x: auto;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  border: 1px solid #ddd;
+  text-align: center;
+  padding: 6px;
+  font-size: 13px;
+}
+
+th {
+  background-color: #f3f4f6;
+}
+
+.name-cell {
+  text-align: left;
+  font-weight: 600;
+  background-color: #fff;
+  position: sticky;
+  left: 0;
+}
+
+.checkbox {
+  width: 22px;
+  height: 22px;
+  margin: 0 auto;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.checkbox:hover {
+  border-color: #2563eb;
+}
+
+.checkbox.checked {
+  background-color: #16a34a;
+  border-color: #16a34a;
+  color: white;
+  font-weight: bold;
+}
+
+.total-cell {
+  font-weight: 600;
+  color: #2563eb;
+}
+
+.footer-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.save-btn {
+  background-color: #16a34a;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.save-btn:hover {
+  background-color: #15803d;
+}
+
+.cancel-btn {
+  background-color: #e5e7eb;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.cancel-btn:hover {
+  background-color: #d1d5db;
+}

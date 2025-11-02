@@ -1,36 +1,31 @@
-import React, { useState } from "react";
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import "./TeacherAttendance.css";
 
-const Attendance = () => {
-  const subjects = ["Computer Networks", "Operating Systems", "Database Systems"];
-  const [selected, setSelected] = useState(null);
+const TeacherAttendance = () => {
+  const navigate = useNavigate();
+
+  const subjects = ["Mathematics", "Science", "English", "History", "Computer Science"];
 
   return (
-    <div className="attendance-page">
-      <header className="page-header">
-        <h2>Attendance Management</h2>
-        <p>Select a subject to take attendance</p>
-      </header>
+    <div className="teacher-attendance">
+      <h1>Attendance</h1>
+      <p className="subtitle">Click on a subject below to take attendance</p>
 
-      <div className="attendance-subjects">
-        {subjects.map((sub, i) => (
-          <div key={i} className="subject-card" onClick={() => setSelected(sub)}>
-            <h4>{sub}</h4>
+      <div className="subject-grid">
+        {subjects.map((subject, index) => (
+          <div
+            key={index}
+            className="subject-card"
+            onClick={() => navigate(`/teacher/attendance/${subject.toLowerCase()}`)}
+          >
+            <h3>{subject}</h3>
+            <p>Click to take attendance</p>
           </div>
         ))}
       </div>
-
-      {selected && (
-        <div className="attendance-panel">
-          <h3>Taking Attendance for: {selected}</h3>
-          <div className="attendance-actions">
-            <button>Mark Present</button>
-            <button>Mark Absent</button>
-            <button>Save Attendance</button>
-          </div>
-        </div>
-      )}
     </div>
   );
 };
 
-export default Attendance;
+export default TeacherAttendance;

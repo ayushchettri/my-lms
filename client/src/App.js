@@ -1,4 +1,5 @@
-import React, { useState} from 'react'
+import React, {useEffect, useState} from 'react';
+import axios from 'axios';
 import { BrowserRouter as Router, Routes, Route, useNavigate } from "react-router-dom";
 import './App.css'
 import './index.css'
@@ -7,7 +8,7 @@ import bgImage from './image/sist-banner.jpg'
 import about from './image/about-us.png'
 import photo from './image/login-avatar.png'
 import Login from './components/login.js'
-import AdminDashboard from './components/admin/dashboard.js';
+import ProtectedRoute from "./components/ProtectedRoutes.js";
 
 // Student imports
 import StudentLayout from "./components/student/Layout";
@@ -21,13 +22,24 @@ import StudentProfile from "./components/student/profile";
 import TeacherLayout from "./components/teacher/Layout";
 import TeacherDashboard from "./components/teacher/dashboard";
 import TeacherAttendance from "./components/teacher/attendance";
+import AttendanceSheet from "./components/teacher/AttendanceSheet";
 import TeacherCourses from "./components/teacher/course";
 import TeacherAssignments from "./components/teacher/assignments";
 import TeacherProfile from "./components/teacher/profile";
 
+// Admin imports
+import AdminLayout from "./components/admin/Layout";
+import AdminDashboard from "./components/admin/Dashboard.js";
+import AdminAttendance from "./components/admin/Attendance";
+import AdminCourses from "./components/admin/Courses";
+import AdminProfile from "./components/admin/Profile";
+import ManageStudents from "./components/admin/ManageStudents.js";
+import ManageTeachers from "./components/admin/ManageTeachers.js";
+
 function Home () {
   const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
+
     return (
     <div className="container">
       {/* Navbar */}
@@ -36,7 +48,6 @@ function Home () {
         <div className="logo-section">
           <img src={logo} alt="Logo" className="logo" />
         </div>
-
         {/* Menu */}
         <nav className="menu">
           <a href="#">Home</a>
@@ -177,7 +188,7 @@ export function App() {
         <Route path="/admin-dashboard" element={<AdminDashboard />} />
         <Route path="/teacher-dashboard" element={<TeacherDashboard />} />
         {/* Student Routes */}
-        <Route path="/student" element={<StudentLayout />}>
+        <Route path="/student" element={<ProtectedRoute allowedRole="student"><StudentLayout /></ProtectedRoute>}>
           <Route path="dashboard" element={<StudentDashboard />} />
           <Route path="attendance" element={<StudentAttendance />} />
           <Route path="courses" element={<StudentCourses />} />
@@ -186,12 +197,23 @@ export function App() {
         </Route>
 
         {/* Teacher Routes */}
-        <Route path="/teacher" element={<TeacherLayout />}>
+        <Route path="/teacher" element={<ProtectedRoute allowedRole="teacher"><TeacherLayout /></ProtectedRoute>}>
           <Route path="dashboard" element={<TeacherDashboard />} />
           <Route path="attendance" element={<TeacherAttendance />} />
+          <Route path="attendance/:subject" element={<AttendanceSheet />} />
           <Route path="courses" element={<TeacherCourses />} />
           <Route path="assignments" element={<TeacherAssignments />} />
           <Route path="profile" element={<TeacherProfile />} />
+        </Route>
+
+        {/* Admin Routes */}
+        <Route path="/admin" element={<ProtectedRoute allowedRole="admin"><AdminLayout /></ProtectedRoute>}>
+          <Route path="dashboard" element={<AdminDashboard />} />
+          <Route path="attendance" element={<AdminAttendance />} />
+          <Route path="courses" element={<AdminCourses />} />
+          <Route path="profile" element={<AdminProfile />} />
+          <Route path="teachers" element={<ManageTeachers />} />
+          <Route path="students" element={<ManageStudents />} />
         </Route>
       </Routes>
     </Router>

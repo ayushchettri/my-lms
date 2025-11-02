@@ -1,6 +1,14 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const Profile = () => {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    navigate("/");
+  };
+
   return (
     <div className="profile-page">
       <header className="page-header">
@@ -19,6 +27,7 @@ const Profile = () => {
         <p>Semester: 7</p>
 
         <button className="edit-btn">Edit Profile</button>
+        <button className="logout-btn" onClick={handleLogout}>Logout</button>
       </div>
     </div>
   );
