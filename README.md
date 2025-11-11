@@ -48,7 +48,7 @@ Built with React.js, NestJS, and PostgreSQL, this system provides role-based das
     cd server
     npm install
 
-  Create a .env file inside server/ with:
+#### Create a .env file inside server/ with:
       DATABASE_URL=postgresql://user:password@localhost:5432/sist_lms
       JWT_SECRET=your_secret_key
       PORT=5000
