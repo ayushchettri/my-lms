@@ -10,20 +10,20 @@ Built with React.js, NestJS, and PostgreSQL, this system provides role-based das
   4. View & download assignments
   5. Update and manage profile
 
-👨‍🏫 Teacher Portal
+### 👨‍🏫 Teacher Portal
   1. Manage courses and assigned subjects
   2. Record and update attendance for each student
   3. Upload and review assignments
   4. View and manage student details
 
-🧩 Common Features
+### 🧩 Common Features
   1. Secure login & registration system
   2. File upload & download (assignments, materials)
   3. Fully responsive design
   4. RESTful API integration
   5. Clean UI with modern layout and mobile navigation toggle
 
-🏗️ Tech Stack
+### 🏗️ Tech Stack
   Layer	                      Technology
   Frontend	        React.js, React Router DOM, Axios, CSS3
   Backend	          NestJS (Node.js framework), Express
@@ -31,49 +31,6 @@ Built with React.js, NestJS, and PostgreSQL, this system provides role-based das
   File Uploads	    Multer (NestJS middleware)
   Authentication	  JWT (JSON Web Token)
   Other Tools	      Nodemon, dotenv, bcrypt, pg
-
-🗂️ Project Structure
-my-lms/
-│
-├── server/                     # NestJS API
-│   ├── src/
-│   │   ├── auth/                # Login, Register, JWT
-│   │   ├── student/             # Student APIs
-│   │   ├── teacher/             # Teacher APIs
-│   │   ├── assignments/         # File upload/download
-│   │   ├── attendance/          # Attendance tracking
-│   │   ├── courses/             # Course management
-│   │   └── main.ts
-│   ├── uploads/                 # Uploaded files (assignments, etc.)
-│   ├── .env
-│   └── package.json
-│
-├── client/                    # React.js client
-│   ├── src/
-│   │   ├── components/
-│   │   │   ├── student/
-│   │   │   │   ├── Dashboard.js
-│   │   │   │   ├── Attendance.js
-│   │   │   │   ├── Assignments.js
-│   │   │   │   ├── Courses.js
-│   │   │   │   ├── Profile.js
-│   │   │   │   ├── Sidebar.js
-│   │   │   │   └── Layout.js
-│   │   │   ├── teacher/
-│   │   │   │   ├── Dashboard.js
-│   │   │   │   ├── Attendance.js
-│   │   │   │   ├── Assignments.js
-│   │   │   │   └── Layout.js
-│   │   ├── App.js
-│   │   ├── index.js
-│   │   └── styles/
-│   │       ├── Student.css
-│   │       └── Teacher.css
-│   ├── public/
-│   └── package.json
-│
-├── README.md
-└── .gitignore
 
 ⚙️ Installation & Setup
 1️⃣ Clone the Repository
