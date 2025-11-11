@@ -42,7 +42,7 @@ Built with React.js, NestJS, and PostgreSQL, this system provides role-based das
 ## ⚙️ Installation & Setup
 ### 1️⃣ Clone the Repository
     git clone https://github.com/ayushchettri/my-lms.git
-    cd myt-lms
+    cd my-lms
 
 ### 2️⃣ Setup Backend (NestJS)
     cd server
@@ -55,7 +55,7 @@ Built with React.js, NestJS, and PostgreSQL, this system provides role-based das
       UPLOADS_DIR=uploads
 
   Run the server:
-      npm run start:dev
+      npm run dev
       Backend will start on: http://localhost:4000
     
 ### 3️⃣ Setup Frontend (React)
