@@ -24,13 +24,13 @@ Built with React.js, NestJS, and PostgreSQL, this system provides role-based das
   5. Clean UI with modern layout and mobile navigation toggle
 
 ### 🏗️ Tech Stack
-  Layer	                      Technology
-  Frontend	        React.js, React Router DOM, Axios, CSS3
-  Backend	          NestJS (Node.js framework), Express
-  Database	        PostgreSQL
-  File Uploads	    Multer (NestJS middleware)
-  Authentication	  JWT (JSON Web Token)
-  Other Tools	      Nodemon, dotenv, bcrypt, pg
+    Layer	                      Technology
+    Frontend	        React.js, React Router DOM, Axios, CSS3
+    Backend	          NestJS (Node.js framework), Express
+    Database	        PostgreSQL
+    File Uploads	    Multer (NestJS middleware)
+    Authentication	  JWT (JSON Web Token)
+    Other Tools	      Nodemon, dotenv, bcrypt, pg
 
 ## ⚙️ Installation & Setup
 ### 1️⃣ Clone the Repository
