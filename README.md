@@ -71,7 +71,7 @@ Built with React.js, NestJS, and PostgreSQL, this system provides role-based das
 
 ## 🧑‍💻 Developers
      Name	               Role
-Ayush Chettri        	Full-Stack Developer
+    Ayush Chettri        Full-Stack Developer
 
 ## 🪪 License
 This project is licensed under the MIT License — feel free to use, modify, and build upon it with attribution.
