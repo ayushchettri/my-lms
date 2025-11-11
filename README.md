@@ -1,6 +1,6 @@
 # SIST LMS — Student Information & Learning Management System
 A full-stack web application for managing student academics, attendance, courses, and assignments.
-Built with React.js, NestJS, and PostgreSQL, this system provides role-based dashboards for students and teachers with real-time data interaction and file uploads.
+Built with React.js, Node.js, and PostgreSQL, this system provides role-based dashboards for students and teachers with real-time data interaction and file uploads.
 
 ## 🚀 Features
 ### 👨‍🎓 Student Portal
@@ -33,7 +33,7 @@ Built with React.js, NestJS, and PostgreSQL, this system provides role-based das
     Layer	                 Technology
     
     Frontend	            React.js, React Router DOM, Axios, CSS3
-    Backend	              NestJS (Node.js framework), Express
+    Backend	              Node.js, Express
     Database	            PostgreSQL
     File Uploads	        Multer (NestJS middleware)
     Authentication	      JWT (JSON Web Token)
