@@ -1,4 +1,4 @@
-SIST LMS — Student Information & Learning Management System
+# SIST LMS — Student Information & Learning Management System
 A full-stack web application for managing student academics, attendance, courses, and assignments.
 Built with React.js, NestJS, and PostgreSQL, this system provides role-based dashboards for students and teachers with real-time data interaction and file uploads.
 
