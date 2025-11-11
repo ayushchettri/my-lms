@@ -1,11 +1,11 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-const Sidebar = () => {
+const Sidebar = ({ isOpen, toggle }) => {
   return (
-    <aside className="teacher-sidebar">
+    <aside className={`teacher-sidebar ${isOpen ? "open" : ""}`}>
       <h2 className="sidebar-logo">SIST <span>LMS</span></h2>
-      <nav className="sidebar-nav">
+      <nav className="sidebar-nav" onClick={toggle}>
         <NavLink to="/teacher/dashboard" className="nav-item">🏠 Dashboard</NavLink>
         <NavLink to="/teacher/attendance" className="nav-item">📊 Attendance</NavLink>
         <NavLink to="/teacher/courses" className="nav-item">📚 Courses</NavLink>

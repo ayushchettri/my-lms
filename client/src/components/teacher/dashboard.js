@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const TeacherDashboard = () => {
@@ -6,40 +7,30 @@ const TeacherDashboard = () => {
   const [totalStudents, setTotalStudents] = useState(0);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const navigate = useNavigate();
 
-  // 👇 Get logged-in teacher from localStorage
   const user = JSON.parse(localStorage.getItem("user"));
+  const teacherId = user?.teacherId;
 
   useEffect(() => {
-  const fetchTeacherCourses = async () => {
+  const fetchCourses = async () => {
     try {
-      if (!user?.id) {
+      console.log(JSON.parse(localStorage.getItem("user")));
+      if (!user?.teacherId) {
         setError("Teacher information not found");
         setLoading(false);
         return;
       }
 
-      // 1️⃣ Get the teacher record using userId
-      const teacherRes = await axios.get(
-        `http://localhost:4000/api/teachers/user/${user.id}`
+      // Use teacherId (T001) not user.id (U001)
+      const res = await axios.get(
+        `http://localhost:4000/api/courses?teacherId=${user.teacherId}`
       );
 
-      const teacher = teacherRes.data;
-      if (!teacher || !teacher.id) {
-        setError("Teacher record not found");
-        setLoading(false);
-        return;
-      }
-
-      // 2️⃣ Fetch only the courses assigned to this teacher
-      const courseRes = await axios.get(
-        `http://localhost:4000/api/courses?teacherId=${teacher.id}`
-      );
-
-      const data = courseRes.data.data || [];
+      const data = res.data.data || [];
       setCourses(data);
 
-      // 🧮 Count unique students across all teacher’s courses
+      // Count unique students
       const totalUniqueStudents = new Set(
         data.flatMap((course) => course.students.map((s) => s.id))
       ).size;
@@ -53,11 +44,10 @@ const TeacherDashboard = () => {
     }
   };
 
-  fetchTeacherCourses();
-}, [user?.id]);
+  fetchCourses();
+}, [user?.teacherId]);
 
-
-  if (loading) return <p className="loading">Loading dashboard...</p>;
+  if (loading) return <p>Loading...</p>;
   if (error) return <p className="error">{error}</p>;
 
   return (
@@ -65,12 +55,12 @@ const TeacherDashboard = () => {
       <header className="page-header">
         <h2>Teacher Dashboard</h2>
         <p>
-          Welcome back, <strong>{user.username}</strong> 👋
+          Welcome back, <strong>{user.name || user.username}</strong> 👋
         </p>
       </header>
 
       <section className="dashboard-stats">
-        <div className="stat-card">
+        <div className="stat-card" onClick={() => navigate(`/teacher/courses`)}>
           <h3>📚 Courses Assigned</h3>
           <p>{courses.length}</p>
         </div>
@@ -78,27 +68,19 @@ const TeacherDashboard = () => {
           <h3>👩‍🎓 Total Students</h3>
           <p>{totalStudents}</p>
         </div>
-        <div className="stat-card">
-          <h3>🕒 Pending Attendance</h3>
-          <p>0</p>
-        </div>
       </section>
 
       <section className="teacher-courses">
-        <h3>Your Assigned Courses</h3>
+        <h3>Assigned Courses</h3>
         <div className="courses-grid">
-          {courses.length === 0 ? (
-            <p>No courses assigned to you yet.</p>
-          ) : (
-            courses.map((course) => (
-              <div className="course-card" key={course.id}>
-                <h4>{course.name}</h4>
-                <p><strong>Course Code:</strong> {course.courseCode}</p>
-                <p><strong>Semester:</strong> {course.semester}</p>
-                <p><strong>Students:</strong> {course.students.length}</p>
-              </div>
-            ))
-          )}
+          {courses.map((course) => (
+            <div className="course-card" key={course.id} onClick={() => navigate(`/teacher/courses`)}>
+              <h4>{course.name}</h4>
+              <p>Code: {course.courseCode}</p>
+              <p>Semester: {course.semester}</p>
+              <p>Students: {course.students.length}</p>
+            </div>
+          ))}
         </div>
       </section>
     </div>

@@ -6,9 +6,11 @@
 }
 
 .admin-sidebar {
-  width: 230px;
   background: #ece7e7;
-  padding: 20px;
+  color: #222;
+  width: 250px;
+  height: 100vh;
+  z-index: 1000;
 }
 
 .sidebar-logo {
@@ -32,9 +34,12 @@
   text-decoration: none;
   color: #444;
   font-weight: 500;
+  padding-left: 20px;
 }
 
+.nav-item:hover,
 .nav-item.active {
+  background: #ffe5b4;
   color: orange;
   font-weight: 700;
 }
@@ -90,6 +95,7 @@ th, td {
 .add-course input {
   margin-right: 10px;
   padding: 8px;
+  margin-bottom: 10px;
 }
 
 .add-course button {
@@ -141,4 +147,106 @@ th, td {
 
 .add-user button:hover {
   background: darkorange;
+}
+
+.menu-toggle {
+  display: none;
+}
+
+/* ---- For tablets and below (≤ 1024px) ---- */
+@media (max-width: 1024px) {
+  .admin-main {
+    padding: 20px;
+  }
+
+  table {
+    font-size: 14px;
+  }
+}
+
+/* ---- For mobile and small tablets (≤ 768px) ---- */
+@media (max-width: 768px) {
+  /* Sidebar hidden by default */
+  .admin-sidebar {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 240px;
+    height: 100vh;
+    background: #ece7e7;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    overflow-y: auto;
+    z-index: 1050;
+    transition: left 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Sidebar visible when active */
+  .admin-sidebar.active {
+    left: 0;
+  }
+
+  /* Ensure sidebar text is visible */
+  .admin-sidebar .sidebar-logo,
+  .admin-sidebar .sidebar-nav,
+  .admin-sidebar .nav-item {
+    visibility: visible;
+    opacity: 1;
+    color: #222;
+  }
+
+  /* Overlay background */
+  .sidebar-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 1040;
+    display: none;
+  }
+
+  .sidebar-overlay.active {
+    display: block;
+  }
+
+  /* Hamburger menu icon */
+  .menu-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    width: 40px;
+    height: 40px;
+    border-radius: 6px;
+    background: orange;
+    color: white;
+    font-size: 22px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 1100;
+  }
+
+  /* Adjust content when sidebar open */
+  .admin-layout.sidebar-open .admin-main {
+    filter: blur(2px);
+    pointer-events: none;
+  }
+
+  .admin-main {
+    margin-left: 0;
+    padding: 20px;
+  }
+
+  /* Scrollable table for mobile */
+  table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
 }

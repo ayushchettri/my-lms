@@ -1,116 +1,54 @@
-import { PrismaClient } from "@prisma/client";
-const prisma = new PrismaClient();
+import prisma from "../prismaClient.js";
+import multer from "multer";
+import path from "path";
+import fs from "fs";
 
-// ✅ CREATE Assignment
-export const createAssignment = async (req, res) => {
+// ✅ Multer setup for file uploads
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    const uploadPath = "uploads/assignments";
+    if (!fs.existsSync(uploadPath)) fs.mkdirSync(uploadPath, { recursive: true });
+    cb(null, uploadPath);
+  },
+  filename: (req, file, cb) => {
+    cb(null, `${Date.now()}-${file.originalname}`);
+  },
+});
+export const upload = multer({ storage });
+
+// ✅ 3. Submit assignment (student side)
+export const submitAssignment = async (req, res) => {
   try {
-    const { id, title, description, dueDate, courseId, teacherId } = req.body;
+    const { assignmentId } = req.params;
+    const { studentId, content } = req.body;
 
-    if (!id || !title || !description || !courseId || !teacherId) {
-      return res.status(400).json({ message: "All fields are required" });
-    }
+    const fileUrl = req.file ? `/uploads/assignments/${req.file.filename}` : null;
 
-    const assignment = await prisma.assignment.create({
-      data: {
-        id,
-        title,
-        description,
-        dueDate: dueDate ? new Date(dueDate) : new Date(),
-        courseId,
-        teacherId,
-      },
+    const submission = await prisma.submission.create({
+      data: { assignmentId, studentId, content, fileUrl },
     });
 
-    res.status(201).json(assignment);
-  } catch (error) {
-    res.status(500).json({
-      message: "Failed to create assignment",
-      error: error.message,
-    });
+    res.json({ success: true, data: submission });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ success: false, message: "Submission failed" });
   }
 };
 
-// ✅ READ - Get all assignments
-export const getAllAssignments = async (req, res) => {
+// ✅ 4. Get all submissions for an assignment (sorted by student ID)
+export const getSubmissions = async (req, res) => {
   try {
-    const assignments = await prisma.assignment.findMany({
-      include: {
-        course: { select: { id: true, name: true } },
-        teacher: { select: { id: true, user: { select: { username: true } } } },
-      },
+    const { assignmentId } = req.params;
+
+    const submissions = await prisma.submission.findMany({
+      where: { assignmentId },
+      include: { student: true },
+      orderBy: { studentId: "asc" },
     });
 
-    res.status(200).json(assignments);
-  } catch (error) {
-    res.status(500).json({
-      message: "Failed to fetch assignments",
-      error: error.message,
-    });
-  }
-};
-
-// ✅ READ - Get assignment by ID
-export const getAssignmentById = async (req, res) => {
-  try {
-    const { id } = req.params;
-
-    const assignment = await prisma.assignment.findUnique({
-      where: { id },
-      include: {
-        course: { select: { id: true, name: true } },
-        teacher: { select: { id: true, user: { select: { username: true } } } },
-      },
-    });
-
-    if (!assignment) {
-      return res.status(404).json({ message: "Assignment not found" });
-    }
-
-    res.status(200).json(assignment);
-  } catch (error) {
-    res.status(500).json({
-      message: "Failed to fetch assignment",
-      error: error.message,
-    });
-  }
-};
-
-// ✅ UPDATE - Assignment
-export const updateAssignment = async (req, res) => {
-  try {
-    const { id } = req.params;
-    const { title, description, dueDate } = req.body;
-
-    const updated = await prisma.assignment.update({
-      where: { id },
-      data: {
-        title,
-        description,
-        dueDate: dueDate ? new Date(dueDate) : undefined,
-      },
-    });
-
-    res.status(200).json(updated);
-  } catch (error) {
-    res.status(500).json({
-      message: "Failed to update assignment",
-      error: error.message,
-    });
-  }
-};
-
-// ✅ DELETE - Assignment
-export const deleteAssignment = async (req, res) => {
-  try {
-    const { id } = req.params;
-
-    await prisma.assignment.delete({ where: { id } });
-
-    res.status(200).json({ message: "Assignment deleted successfully" });
-  } catch (error) {
-    res.status(500).json({
-      message: "Failed to delete assignment",
-      error: error.message,
-    });
+    res.json({ success: true, data: submissions });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ success: false, message: "Failed to fetch submissions" });
   }
 };

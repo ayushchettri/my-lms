@@ -9,11 +9,13 @@ import bodyParser from "body-parser";
 import authRoutes from "./routes/auth.js";
 import courseRoutes from "./routes/courses.js";
 import userRoutes from "./routes/userRoutes.js";
+import adminRoutes from "./routes/adminRoutes.js";
 import teacherRoutes from "./routes/teacherRoutes.js";
 import studentRoutes from "./routes/student.js";
 import attendanceRoutes from "./routes/attendance.js";
 import assignmentRoutes from "./routes/assignment.js";
 import submissionRoutes from "./routes/submission.js";
+import path from "path";
 
 dotenv.config();
 const app = express();
@@ -26,12 +28,14 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
+app.use("/api/admins", adminRoutes);
 app.use("/api/courses", courseRoutes);
 app.use("/api/teachers", teacherRoutes);
 app.use("/api/students", studentRoutes);
 app.use("/api/attendance", attendanceRoutes);
 app.use("/api/assignments", assignmentRoutes);
 app.use("/api/submissions", submissionRoutes);
+app.use("/uploads", express.static("uploads"));
 
 const PORT = process.env.PORT || 4000;
 

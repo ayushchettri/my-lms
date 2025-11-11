@@ -12,6 +12,7 @@ model User {
   username String   @unique
   password String
   role     String
+  name     String?
   student  Student?
   teacher  Teacher?
 }
@@ -35,7 +36,7 @@ model Teacher {
 }
 
 model Course {
-  id          String       @id
+  id          String       @id @default(uuid())
   courseCode  String
   name        String
   semester    String
@@ -48,7 +49,7 @@ model Course {
 }
 
 model Attendance {
-  id        String   @id
+  id        String   @id @default(uuid())
   date      DateTime @default(now())
   status    String
   studentId String
@@ -58,7 +59,7 @@ model Attendance {
 }
 
 model Assignment {
-  id          String       @id
+  id          String       @id @default(uuid())
   title       String
   description String
   dueDate     DateTime
@@ -70,10 +71,11 @@ model Assignment {
 }
 
 model Submission {
-  id           String     @id
+  id           String     @id @default(uuid())
   assignmentId String
   studentId    String
-  content      String
+  content      String? // text-based submission (optional)
+  fileUrl      String? // new: supports file uploads (PDF, DOC, etc.)
   submittedAt  DateTime   @default(now())
   remarks      String?
   assignment   Assignment @relation(fields: [assignmentId], references: [id])
@@ -81,8 +83,9 @@ model Submission {
 }
 
 model Material {
-  id        String   @id @default(cuid())
+  id        String   @id @default(uuid())
   title     String
+  fileUrl   String?
   createdAt DateTime @default(now())
   courseId  String
   course    Course   @relation("CourseMaterials", fields: [courseId], references: [id])

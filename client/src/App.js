@@ -15,6 +15,7 @@ import StudentLayout from "./components/student/Layout";
 import StudentDashboard from "./components/student/dashboard";
 import StudentAttendance from "./components/student/attendance";
 import StudentCourses from "./components/student/course";
+import CourseDetail from "./components/student/courseDetail";
 import StudentAssignments from "./components/student/assignments";
 import StudentProfile from "./components/student/profile";
 
@@ -22,7 +23,6 @@ import StudentProfile from "./components/student/profile";
 import TeacherLayout from "./components/teacher/Layout";
 import TeacherDashboard from "./components/teacher/dashboard";
 import TeacherAttendance from "./components/teacher/attendance";
-import AttendanceSheet from "./components/teacher/AttendanceSheet";
 import TeacherCourses from "./components/teacher/course";
 import TeacherAssignments from "./components/teacher/assignments";
 import TeacherProfile from "./components/teacher/profile";
@@ -49,13 +49,13 @@ function Home () {
           <img src={logo} alt="Logo" className="logo" />
         </div>
         {/* Menu */}
-        <nav className="menu">
+        <div className="menu">
           <a href="#">Home</a>
           <a href="#about">About Us</a>
           <a href="#contact">Contact Us</a>
           <a href="#developers">Developers</a>
           <button className="login-btn" onClick={() => navigate("/login")}>Login</button>
-        </nav>
+        </div>
       </header>
 
       {/* Title */}
@@ -192,6 +192,7 @@ export function App() {
           <Route path="dashboard" element={<StudentDashboard />} />
           <Route path="attendance" element={<StudentAttendance />} />
           <Route path="courses" element={<StudentCourses />} />
+          <Route path="courses/:courseId" element={<CourseDetail />} />
           <Route path="assignments" element={<StudentAssignments />} />
           <Route path="profile" element={<StudentProfile />} />
         </Route>
@@ -200,8 +201,7 @@ export function App() {
         <Route path="/teacher" element={<ProtectedRoute allowedRole="teacher"><TeacherLayout /></ProtectedRoute>}>
           <Route path="dashboard" element={<TeacherDashboard />} />
           <Route path="attendance" element={<TeacherAttendance />} />
-          <Route path="attendance/:subject" element={<AttendanceSheet />} />
-          <Route path="courses" element={<TeacherCourses />} />
+          <Route path="/teacher/courses" element={ <TeacherCourses teacherId={JSON.parse(localStorage.getItem("user"))?.teacherId}/>}/>
           <Route path="assignments" element={<TeacherAssignments />} />
           <Route path="profile" element={<TeacherProfile />} />
         </Route>

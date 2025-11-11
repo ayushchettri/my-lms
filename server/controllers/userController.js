@@ -3,7 +3,7 @@ const prisma = new PrismaClient();
 
 export const createUser = async (req, res) => {
   try {
-    const { id, username, password, role } = req.body;
+    const { id, username, password, role, name} = req.body;
 
     // Validation based on your actual schema
     if (!id || !username || !password || !role) {
@@ -11,7 +11,7 @@ export const createUser = async (req, res) => {
     }
 
     const user = await prisma.user.create({
-      data: { id, username, password, role },
+      data: { id, username, password, role, name},
     });
 
     res.status(201).json({ message: "User created successfully", user });

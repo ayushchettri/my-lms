@@ -43,16 +43,17 @@ function Login() {
       }
 
       // ✅ Save user info
-      localStorage.setItem("user", JSON.stringify(user));
+      if (res.ok && result.success) {
+  localStorage.setItem("user", JSON.stringify(result.user));
 
-      // ✅ Redirect by role
-      if (user.role === "admin") {
-        navigate("/admin/dashboard");
-      } else if (user.role === "teacher") {
-        navigate("/teacher/dashboard");
-      } else if (user.role === "student") {
-        navigate("/student/dashboard");
-      }
+  if (result.user.role === "teacher") {
+    navigate("/teacher/dashboard");
+  } else if (result.user.role === "student") {
+    navigate("/student/dashboard");
+  } else if (result.user.role === "admin") {
+    navigate("/admin/dashboard");
+  }
+}
     } catch (err) {
       console.error("Login error:", err);
       setError("⚠️ Server error. Please try again later.");
