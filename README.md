@@ -24,7 +24,7 @@ Built with React.js, NestJS, and PostgreSQL, this system provides role-based das
   5. Clean UI with modern layout and mobile navigation toggle
 
 ### 🏗️ Tech Stack
-    Layer	                 Technology
+###    Layer	                 Technology
     Frontend	            React.js, React Router DOM, Axios, CSS3
     Backend	              NestJS (Node.js framework), Express
     Database	            PostgreSQL
