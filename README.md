@@ -16,6 +16,12 @@ Built with React.js, NestJS, and PostgreSQL, this system provides role-based das
   3. Upload and review assignments
   4. View and manage student details
 
+### 🧑‍💻 Admin Portal
+  1.View and manage users details(both teachers and students)
+  2. Check system report
+  3. Create courses, assign teacher and enroll students
+  4. Check attendance of students
+
 ### 🧩 Common Features
   1. Secure login & registration system
   2. File upload & download (assignments, materials)
