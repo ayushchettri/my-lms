@@ -57,34 +57,25 @@ Built with React.js, NestJS, and PostgreSQL, this system provides role-based das
   npm start
   Frontend will start on: http://localhost:3000
 
-🔄 API Endpoints (Sample)
-Method	  Endpoint	            Description
-POST	  /auth/register	      Register new user
-POST	  /auth/login	          Login & get JWT
-GET	    /student/attendance	  Fetch attendance data
-POST	  /teacher/attendance	  Mark attendance
-POST	  /assignments/upload   Upload assignment file
-GET	    /assignments/:id	    Download assignment file
-
-📱 Responsive Design
+## 📱 Responsive Design
   1. Uses CSS Flexbox & Grid for layout
   2. Sidebar transforms into a toggleable drawer on mobile
   3. Tables become scrollable horizontally on small screens
   4. Smooth UI for all screen sizes (320px → 1440px+)
 
-🧠 Future Enhancements
+## 🧠 Future Enhancements
   1. Analytics dashboard for student progress
   2. In-app messaging between teacher & student
   3. Timetable & announcements module
   4. Attendance chart visualization
 
-🧑‍💻 Developers
+## 🧑‍💻 Developers
      Name	               Role
 Ayush Chettri    	Full-Stack Developer
 
-🪪 License
+## 🪪 License
 This project is licensed under the MIT License — feel free to use, modify, and build upon it with attribution.
 
-💬 Feedback
+## 💬 Feedback
 If you find an issue or have suggestions, please open a GitHub issue or submit a pull request.
 Let’s make academic management simpler and smarter 🚀.
