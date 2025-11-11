@@ -32,12 +32,12 @@ Built with React.js, NestJS, and PostgreSQL, this system provides role-based das
   Authentication	  JWT (JSON Web Token)
   Other Tools	      Nodemon, dotenv, bcrypt, pg
 
-⚙️ Installation & Setup
-1️⃣ Clone the Repository
+## ⚙️ Installation & Setup
+### 1️⃣ Clone the Repository
   git clone https://github.com/ayushchettri/my-lms.git
   cd myt-lms
 
-2️⃣ Setup Backend (NestJS)
+### 2️⃣ Setup Backend (NestJS)
   cd server
   npm install
 
@@ -50,8 +50,8 @@ Built with React.js, NestJS, and PostgreSQL, this system provides role-based das
   Run the server:
     npm run start:dev
     Backend will start on: http://localhost:4000
-
-3️⃣ Setup Frontend (React)
+    
+### 3️⃣ Setup Frontend (React)
   cd ../client
   npm install
   npm start
