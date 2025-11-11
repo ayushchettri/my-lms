@@ -2,8 +2,8 @@
 A full-stack web application for managing student academics, attendance, courses, and assignments.
 Built with React.js, NestJS, and PostgreSQL, this system provides role-based dashboards for students and teachers with real-time data interaction and file uploads.
 
-🚀 Features
-👨‍🎓 Student Portal
+## 🚀 Features
+### 👨‍🎓 Student Portal
   1. View dashboard summary with quick academic stats
   2. Check attendance percentage per course
   3. Browse enrolled courses
