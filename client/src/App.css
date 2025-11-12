@@ -208,9 +208,20 @@ body, html {
   text-align: left;
 }
 
+#asish-shakya h2, #ashish-sunar h2{
+  display: flex;
+  justify-content: flex-start;
+}
+
 #ayush-chettri, #aakansh-rai{
   justify-content:flex-end;
   text-align:right;
+}
+
+#ayush-chettri h2, #aakansh-rai h2{
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
 }
 
 #ayush-chettri p, #aakansh-rai p{
@@ -242,24 +253,154 @@ body, html {
   font-size: 14px;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
+/* Tablets (≤1024px) */
+@media (max-width: 1024px) {
   .navbar {
-    flex-direction: column;
-    gap: 10px;
+    padding: 10px 20px;
   }
 
   .menu {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .main-image {
-    width: 100%;
+    gap: 12px;
   }
 
   .title {
-    font-size: 28px; 
+    font-size: 2.5rem;
   }
+
+  .section {
+    padding: 40px 6%;
+  }
+
+  .about img {
+    width: 100%;
+  }
+}
+
+/* Mobile (≤768px) */
+@media (max-width: 768px) {
+  /* Navbar becomes collapsible */
+  .menu {
+    display: none;
+    flex-direction: column;
+    background: white;
+    position: absolute;
+    top: 70px;
+    right: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+    z-index: 2000;
+  }
+
+  .menu.active {
+    display: flex;
+  }
+
+  .menu a {
+    padding: 8px 0;
+  }
+
+  .login-btn {
+    width: 100%;
+  }
+
+  .main-section {
+    padding: 70px 10px;
+  }
+
+  .main-image {
+    width: 95%;
+  }
+
+  .overlay-login-btn {
+    right: 15px;
+    bottom: 15px;
+  }
+
+  .section-items {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .about img, .contact iframe {
+    width: 100%;
+  }
+
+  .developer-items {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .developer-items img {
+    width: 150px;
+    height: 150px;
+  }
+
+  .footer {
+    font-size: 0.8rem;
+  }
+}
+
+/* Small Phones (≤480px) */
+@media (max-width: 480px) {
+  .title {
+    font-size: 2rem;
+  }
+
+  .section h2 {
+    font-size: 1.5rem;
+  }
+
+  .dev-details h2, .dev-details h3 {
+    font-size: 1rem;
+  }
+
+  .overlay-login-btn {
+    padding: 8px 15px;
+    font-size: 0.9rem;
+  }
+  .developers {
+    width: 100%;
+  background: #f9f9f9;
+}
+
+.developers .section-items{
+  display: flex;
+  flex-direction: column;
+}
+.developer-items{
+  transform: none;
+  width: 100%;
+  margin-top: 10px;
+  background-color: #002147;
+  color: #fff;
+  height: auto;
+  display: flex;
+  overflow:visible;
+  border-radius: 10px;
+ } 
+ .developer-items .dev-details{
+  width: 100%;
+  padding-left: 15px;
+  padding-bottom: 10px;
+  transform: none;
+  text-align:left;
+ }
+
+ #ayush-chettri h2, #aakansh-rai h2, #asish-shakya h2, #ashish-sunar h2{
+  display: flex;
+  justify-content: flex-start;
+  padding-left: 20px;
+}
+
+ .developer-items .dev-details p{
+  width: 100%;
+ }
+ .developer-items img{
+  display: none;
+ }
+
+ .developers .social-icons a{
+  color: #fff;
+ }
 }

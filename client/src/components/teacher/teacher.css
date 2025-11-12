@@ -512,6 +512,11 @@
   background-color: #e5e7eb;
 }
 
+.teacher-layout button{
+  background: orange;
+  color: white;
+}
+
 /* Sidebar Toggle Button (for mobile) */
 .sidebar-toggle {
   display: none;

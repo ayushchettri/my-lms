@@ -158,3 +158,63 @@ input:focus {
     transform: translateY(-50%);
   }
 }
+
+/* Medium screens (tablets) */
+@media (max-width: 768px) {
+  .title {
+    font-size: 2rem;
+  }
+
+  .login-box {
+    width: 320px;
+    padding: 1.5rem;
+  }
+
+  .avatar {
+    width: 70px;
+    height: 70px;
+  }
+}
+
+/* Small screens (phones) */
+@media (max-width: 600px) {
+  .bg-image {
+    display: none; /* Hide background image */
+  }
+
+  .background {
+    background: #ffffff;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .login-box {
+    position: relative;
+    width: 100%;
+    max-width: 340px;
+    box-shadow: none;
+    padding: 1.5rem;
+    border-radius: 12px;
+  }
+
+  .title {
+    font-size: 1.8rem;
+  }
+
+  .tab {
+    font-size: 0.9rem;
+    padding: 0.4rem 0.8rem;
+  }
+
+  input {
+    font-size: 0.9rem;
+    padding: 0.6rem;
+  }
+
+  .login-btn {
+    font-size: 0.95rem;
+    padding: 0.6rem;
+  }
+}
