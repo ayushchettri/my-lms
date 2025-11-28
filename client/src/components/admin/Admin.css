@@ -157,7 +157,7 @@ th, td {
   display: none;
 }
 
-/* ---- For tablets and below (≤ 1024px) ---- */
+/* For tablets and below (≤ 1024px) */
 @media (max-width: 1024px) {
   .admin-main {
     padding: 20px;
@@ -168,7 +168,7 @@ th, td {
   }
 }
 
-/* ---- For mobile and small tablets (≤ 768px) ---- */
+/* For mobile and small tablets (≤ 768px) */
 @media (max-width: 768px) {
   /* Sidebar hidden by default */
   .admin-sidebar {

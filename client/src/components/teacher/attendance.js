@@ -94,7 +94,6 @@ const TeacherAttendance = () => {
 
   // 🧠 Handle checkbox change (mark Present/Absent)
   const handleCheckboxChange = (studentId) => {
-    if (existingAttendance) return;
     setAttendance((prev) => ({
       ...prev,
       [studentId]: !prev[studentId],
@@ -144,8 +143,8 @@ const TeacherAttendance = () => {
 
         <input type="date" value={date} onChange={(e) => setDate(e.target.value)} />
 
-        <button onClick={handleSubmit} disabled={existingAttendance}>
-          {existingAttendance ? "Attendance Already Recorded" : "Submit Attendance"}
+        <button onClick={handleSubmit}>
+          Submit Attendance
         </button>
       </div>
 
@@ -172,7 +171,6 @@ const TeacherAttendance = () => {
                       type="checkbox"
                       checked={attendance[student.id] || false}
                       onChange={() => handleCheckboxChange(student.id)}
-                      disabled={existingAttendance}
                     />
                   </td>
                   <td>{attendanceSummary[student.id] || "0%"}</td>

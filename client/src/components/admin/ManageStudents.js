@@ -3,6 +3,7 @@ import axios from "axios";
 
 const ManageStudents = () => {
   const [students, setStudents] = useState([]);
+  const [selectedSem, setSelectedSem] = useState(null);
   const [newStudent, setNewStudent] = useState({
     id: "",
     name: "",
@@ -34,6 +35,14 @@ const ManageStudents = () => {
     };
     fetchStudents();
   }, []);
+
+  // Group students
+  const groupedStudents = students.reduce((acc, student) => {
+  const sem = student.semester || "Unknown";
+  if (!acc[sem]) acc[sem] = [];
+  acc[sem].push(student);
+  return acc;
+}, {});
 
   // ✅ Add student
   const handleAdd = async () => {
@@ -88,74 +97,104 @@ const ManageStudents = () => {
     }
   };
 
-  return (
-    <div className="manage-page">
-      <header className="page-header">
-        <h2>Manage Students</h2>
-        <p>Add, remove, or update student data</p>
-      </header>
+return (
+  <div className="manage-page">
+    <header className="page-header">
+      <h2>Manage Students</h2>
+      <p>Add, remove, or update student data</p>
+    </header>
 
-      <div className="add-user">
-        <input
-          type="text"
-          placeholder="Student ID"
-          value={newStudent.id}
-          onChange={(e) => setNewStudent({ ...newStudent, id: e.target.value })}
-        />
-        <input
-          type="text"
-          placeholder="Full Name"
-          value={newStudent.name}
-          onChange={(e) => setNewStudent({ ...newStudent, name: e.target.value })}
-        />
-        <input
-          type="text"
-          placeholder="Username"
-          value={newStudent.username}
-          onChange={(e) => setNewStudent({ ...newStudent, username: e.target.value })}
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={newStudent.password}
-          onChange={(e) => setNewStudent({ ...newStudent, password: e.target.value })}
-        />
-        <input
-          type="text"
-          placeholder="Semester"
-          value={newStudent.semester}
-          onChange={(e) => setNewStudent({ ...newStudent, semester: e.target.value })}
-        />
-        <button onClick={handleAdd}>Add Student</button>
-      </div>
-
-      <h3>All Students</h3>
-      <table>
-        <thead>
-          <tr>
-            <th>Student ID</th>
-            <th>Name</th>
-            <th>Username</th>
-            <th>Semester</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          {students.map((s, i) => (
-            <tr key={i}>
-              <td>{s.id}</td>
-              <td>{s.user?.name || s.name || "N/A"}</td>
-              <td>{s.user?.username || s.username || "N/A"}</td>
-              <td>{s.semester}</td>
-              <td>
-                <button onClick={() => handleDelete(s.id)}>Delete</button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+    <div className="add-user">
+      <input
+        type="text"
+        placeholder="Student ID"
+        value={newStudent.id}
+        onChange={(e) => setNewStudent({ ...newStudent, id: e.target.value })}
+      />
+      <input
+        type="text"
+        placeholder="Full Name"
+        value={newStudent.name}
+        onChange={(e) => setNewStudent({ ...newStudent, name: e.target.value })}
+      />
+      <input
+        type="text"
+        placeholder="Username"
+        value={newStudent.username}
+        onChange={(e) => setNewStudent({ ...newStudent, username: e.target.value })}
+      />
+      <input
+        type="password"
+        placeholder="Password"
+        value={newStudent.password}
+        onChange={(e) => setNewStudent({ ...newStudent, password: e.target.value })}
+      />
+      <input
+        type="text"
+        placeholder="Semester"
+        value={newStudent.semester}
+        onChange={(e) => setNewStudent({ ...newStudent, semester: e.target.value })}
+      />
+      <button onClick={handleAdd}>Add Student</button>
     </div>
-  );
+
+    <h3>All Semesters</h3>
+
+    <div className="semester-grid">
+      {Object.keys(groupedStudents).length > 0 ? (
+        Object.keys(groupedStudents).map((sem, i) => (
+          <div
+            key={i}
+            className="semester-card"
+            onClick={() => setSelectedSem(sem)}
+          >
+            <h4>{sem}</h4>
+            <p>Students: {groupedStudents[sem].length}</p>
+          </div>
+        ))
+      ) : (
+        <p>No semester data found</p>
+      )}
+    </div>
+
+    {selectedSem && (
+      <div className="attendance-details">
+        <h3>Students - {selectedSem}</h3>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Student ID</th>
+              <th>Name</th>
+              <th>Username</th>
+              <th>Semester</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {groupedStudents[selectedSem].map((s, i) => (
+              <tr key={i}>
+                <td>{s.id}</td>
+                <td>{s.user?.name || s.name || "N/A"}</td>
+                <td>{s.user?.username || s.username || "N/A"}</td>
+                <td>{s.semester}</td>
+                <td>
+                  <button onClick={() => handleDelete(s.id)}>Delete</button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+
+        {groupedStudents[selectedSem].length === 0 && (
+          <p>No students available</p>
+        )}
+      </div>
+    )}
+
+  </div>
+);
+
 };
 
 export default ManageStudents;

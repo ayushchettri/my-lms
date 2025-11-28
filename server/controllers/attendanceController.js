@@ -3,8 +3,8 @@ import { v4 as uuidv4 } from "uuid";
 
 const prisma = new PrismaClient();
 
-/**
- * ✅ CREATE attendance (bulk, prevents duplicate entries per course/date)
+/*
+  ✅ CREATE attendance (bulk, prevents duplicate entries per course/date)
  */
 export const createAttendance = async (req, res) => {
   try {
@@ -23,43 +23,60 @@ export const createAttendance = async (req, res) => {
       return res.status(400).json({ message: "Course ID and date are required" });
     }
 
-    // ✅ Step 1: Check if attendance already exists for this course/date
-    const existing = await prisma.attendance.findMany({
-      where: { courseId, date },
-    });
+    let updatedCount = 0;
+    let createdCount = 0;
 
-    if (existing.length > 0) {
-      return res.status(400).json({
-        message: "Attendance for this course and date already exists",
+    for (const record of attendanceData) {
+      const { studentId, status } = record;
+
+      // Check if attendance exists for this student/course/date
+      const existing = await prisma.attendance.findFirst({
+        where: {
+          courseId,
+          studentId,
+          date,
+        },
       });
+
+      if (existing) {
+        // ✔ Update existing entry
+        await prisma.attendance.update({
+          where: { id: existing.id },
+          data: { status },
+        });
+        updatedCount++;
+      } else {
+        // ✔ Create new attendance entry
+        await prisma.attendance.create({
+          data: {
+            id: uuidv4(),
+            courseId,
+            studentId,
+            status,
+            date,
+          },
+        });
+        createdCount++;
+      }
     }
 
-    // ✅ Step 2: Insert all attendance records
-    const created = await prisma.attendance.createMany({
-      data: attendanceData.map((record) => ({
-        id: uuidv4(),
-        courseId: record.courseId,
-        studentId: record.studentId,
-        status: record.status,
-        date: new Date(record.date),
-      })),
-      skipDuplicates: true,
+    console.log(`✅ Attendance processed | Updated: ${updatedCount}, Created: ${createdCount}`);
+
+    res.status(200).json({
+      message: "Attendance saved/updated successfully",
+      updated: updatedCount,
+      created: createdCount,
     });
 
-    console.log(`✅ Attendance recorded for ${created.count} students on ${date.toDateString()}`);
-
-    res.status(201).json({
-      message: "✅ Attendance recorded successfully",
-      count: created.count,
-    });
   } catch (error) {
-    console.error("❌ Failed to create attendance:", error);
+    console.error("❌ Failed to save/update attendance:", error);
     res.status(500).json({
       message: "Failed to submit attendance",
       error: error.message,
     });
   }
 };
+
 
 /**
  * ✅ GET attendance by course + date
