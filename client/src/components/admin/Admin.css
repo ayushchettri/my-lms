@@ -153,6 +153,10 @@ th, td {
   display: none;
 }
 
+.sidebar-overlay{
+  display: none;
+}
+
 /* ---- For tablets and below (≤ 1024px) ---- */
 @media (max-width: 1024px) {
   .admin-main {
